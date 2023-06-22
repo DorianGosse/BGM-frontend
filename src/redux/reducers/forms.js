@@ -13,7 +13,16 @@ const defaultFormValues = {
     }
 }
 
-export default function forms(state = defaultFormValues, action) {
+export default (state = {
+    loginForm: {
+        values: defaultFormValues.loginForm,
+        errors: {}
+    },
+    signupForm: {
+        values: defaultFormValues.signupForm,
+        errors: {}
+    }
+}, action) => {
     switch (action.type) {
         case actions.CHANGE_FORM_VALUE:
             return {

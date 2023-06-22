@@ -2,8 +2,10 @@ import { connect } from "react-redux";
 import LoginView from "./LoginView";
 
 const mapStateToProps = (state) => {
+    console.log('state',state)
     return {
-        loginForm: state.forms.loginForm,
+        loginForm: state.forms.loginForm.values,
+        signupForm: state.forms.signupForm.values,
     };
 }
 
@@ -21,21 +23,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({
                 type: 'CLEAR_FORM',
                 formName
-            })
-        },
-        addFormError: (formName, key, error) => {
-            dispatch({
-                type: 'ADD_FORM_ERROR',
-                formName,
-                key,
-                error
-            })
-        },
-        removeFormError: (formName, key) => {
-            dispatch({
-                type: 'REMOVE_FORM_ERROR',
-                formName,
-                key
             })
         }
     }
