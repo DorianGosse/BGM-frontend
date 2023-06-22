@@ -1,0 +1,4 @@
+export const CHANGE_FORM_VALUE = 'CHANGE_FORM_VALUE';
+export const CLEAR_FORM = 'CLEAR_FORM';
+export const ADD_FORM_ERROR = 'ADD_FORM_ERROR';
+export const REMOVE_FORM_ERROR = 'REMOVE_FORM_ERROR';
