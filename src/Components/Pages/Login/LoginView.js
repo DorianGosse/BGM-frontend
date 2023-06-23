@@ -30,11 +30,13 @@ const LoginView = ({ changeFormValue, clearForm, loginForm, signupForm }) => {
     }
 
     const handleEmailChange = (e) => {
+        console.log('email change', e.target.value);
         const form = showSignup ? 'signupForm' : 'loginForm';
         changeFormValue(form, 'email', e.target.value);
     }
 
     const handlePasswordChange = (e) => {
+        console.log('password change', e.target.value);
         const form = showSignup ? 'signupForm' : 'loginForm';
         changeFormValue(form, 'password', e.target.value);
     }
@@ -48,11 +50,13 @@ const LoginView = ({ changeFormValue, clearForm, loginForm, signupForm }) => {
                 <div className='input-field-container'>
                         <input
                             value={showSignup ? signupForm.email : loginForm.email}
+                            type='text'
                             onChange={e => handleEmailChange(e)}
                             placeholder='Enter email'
                         />
                         <input
                             value={showSignup ? signupForm.password : loginForm.password}
+                            type='password'
                             onChange={e => handlePasswordChange(e)}
                             placeholder='Enter password'
                         />
@@ -61,6 +65,7 @@ const LoginView = ({ changeFormValue, clearForm, loginForm, signupForm }) => {
                             ?
                             <input
                                 value={signupForm.confirmPassword}
+                                type='password'
                                 onChange={e => changeFormValue('loginForm', 'confirmPassword', e.target.value)}
                                 placeholder='Confirm password'
                             />

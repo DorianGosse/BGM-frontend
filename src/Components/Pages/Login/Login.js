@@ -11,11 +11,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeFormValue: (formName, key, value) => {
+        changeFormValue: (form, field, value) => {
+            console.log('changeFormValue', form, field, value);
             dispatch({
                 type: 'CHANGE_FORM_VALUE',
-                formName,
-                key,
+                form,
+                field,
                 value
             })
         },

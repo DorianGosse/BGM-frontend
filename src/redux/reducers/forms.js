@@ -13,7 +13,7 @@ const formDefaultValues = {
   }
 }
 
-export default (state = {
+const forms = (state = {
   signupForm: {
     values: formDefaultValues.signupForm,
     errors: {}
@@ -65,3 +65,5 @@ export default (state = {
     default: return state
   }
 }
+
+export default forms;
