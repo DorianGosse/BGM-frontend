@@ -1,62 +1,67 @@
-import * as actions from '../actions';
-import { omit } from 'lodash';
+import * as actions from '../actions'
+import { omit } from 'lodash'
 
-const defaultFormValues = {
-    loginForm: {
-        email: '',
-        password: ''
-    },
-    signupForm: {
-        email: '',
-        password: '',
-        confirmPassword: ''
-    }
+const formDefaultValues = {
+  signupForm: {
+    email: '',
+    password: ''
+  },
+  loginForm: {
+    email: '',
+    password: '',
+    confirmPassword: ''
+  }
 }
 
 export default (state = {
-    loginForm: {
-        values: defaultFormValues.loginForm,
-        errors: {}
-    },
-    signupForm: {
-        values: defaultFormValues.signupForm,
-        errors: {}
-    }
+  signupForm: {
+    values: formDefaultValues.signupForm,
+    errors: {}
+  },
+  loginForm: {
+    values: formDefaultValues.loginForm,
+    errors: {}
+  }
 }, action) => {
-    switch (action.type) {
-        case actions.CHANGE_FORM_VALUE:
-            return {
-                ...state,
-                [action.formName]: {
-                    ...state[action.formName],
-                    [action.key]: action.value
-                }
-            }
-        case actions.CLEAR_FORM:
-            return {
-                ...state,
-                [action.formName]: defaultFormValues[action.formName]
-            }
-        case actions.ADD_FORM_ERROR:
-            return {
-                ...state,
-                [action.formName]: {
-                    ...state[action.formName],
-                    errors: {
-                        ...state[action.formName].errors,
-                        [action.key]: action.error
-                    }
-                }
-            }
-        case actions.REMOVE_FORM_ERROR:
-            return {
-                ...state,
-                [action.formName]: {
-                    ...state[action.formName],
-                    errors: omit(state[action.formName].errors, action.key)
-                }
-            }
-        default:
-            return state
-    }
+  switch (action.type) {
+    case actions.CHANGE_FORM_VALUE:
+      return Object.assign({}, state, {
+        [action.form]: {
+          values: {
+            ...state[action.form].values,
+            [action.field]: action.value
+          },
+          errors: state[action.form].errors
+        }
+      })
+    case actions.CLEAR_FORM:
+      return Object.assign({}, state, {
+        [action.form]: {
+          values: formDefaultValues[action.form],
+          errors: {}
+        }
+      })
+    case actions.ADD_FORM_ERROR:
+      return Object.assign({}, state, {
+        [action.form]: {
+          values: state[action.form].values,
+          errors: {
+            ...state[action.form].errors,
+            [action.field]: action.error
+          }
+        }
+      })
+    case actions.REMOVE_FORM_ERROR:
+      if (state[action.form].errors[action.field]) {
+        return Object.assign({}, state, {
+          [action.form]: {
+            values: state[action.form].values,
+            errors: omit(state[action.form].errors, action.field)
+          }
+        })
+      } else {
+        return state 
+      }
+    default: return state
+  }
 }

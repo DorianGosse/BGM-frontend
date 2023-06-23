@@ -52,7 +52,7 @@ const LoginView = ({ changeFormValue, clearForm, loginForm, signupForm }) => {
                             placeholder='Enter email'
                         />
                         <input
-                            // value={showSignup ? signupForm.password : loginForm.password}
+                            value={showSignup ? signupForm.password : loginForm.password}
                             onChange={e => handlePasswordChange(e)}
                             placeholder='Enter password'
                         />
