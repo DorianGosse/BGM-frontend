@@ -27,55 +27,67 @@ const LoginView = ({ changeFormValue, clearForm, loginForm, signupForm }) => {
         } else {
             console.log('login clicked from login state');
         }
-    }
+    };
 
     const handleEmailChange = (e) => {
         console.log('email change', e.target.value);
         const form = showSignup ? 'signupForm' : 'loginForm';
         changeFormValue(form, 'email', e.target.value);
-    }
+    };
 
     const handlePasswordChange = (e) => {
         console.log('password change', e.target.value);
         const form = showSignup ? 'signupForm' : 'loginForm';
         changeFormValue(form, 'password', e.target.value);
-    }
-
-    console.log('loginForm', loginForm);
+    };
 
     return (
         <div className='login-page-container'>
             <h1>Dorians BGM App</h1>
             <div className='login-form-container'>
                 <div className='input-field-container'>
+                    <div class="input-container field">
                         <input
+                            className="form-field"
+                            type="text"
+                            id='email'
                             value={showSignup ? signupForm.email : loginForm.email}
-                            type='text'
-                            onChange={e => handleEmailChange(e)}
-                            placeholder='Enter email'
+                            onChange={e => handleEmailChange(e)}    
                         />
+                        <label for="email" className="form-label">Email</label>
+                    </div>
+                    <div className='input-container field'>
                         <input
-                            value={showSignup ? signupForm.password : loginForm.password}
+                            className='form-field'
                             type='password'
+                            id='password'
+                            value={showSignup ? signupForm.password : loginForm.password}
                             onChange={e => handlePasswordChange(e)}
-                            placeholder='Enter password'
                         />
+                        <label for='password' className='form-label'>Password</label>
+                    </div>
                         {
-                        showSignup
+                            showSignup
                             ?
-                            <input
-                                value={signupForm.confirmPassword}
-                                type='password'
-                                onChange={e => changeFormValue('loginForm', 'confirmPassword', e.target.value)}
-                                placeholder='Confirm password'
-                            />
+                            <div className='confirm-password-input'>
+                                <div className='input-container field'>
+                                    <input
+                                        id='confirm-password'
+                                        className='form-field'
+                                        value={signupForm.confirmPassword}
+                                        type='password'
+                                        onChange={e => changeFormValue('loginForm', 'confirmPassword', e.target.value)}
+                                    />
+                                    <label for='confirm-password' className='form-label'>Confirm</label>
+                                </div>
+                            </div>
                             :
                             null
                         }
                 </div>
                 <div className='login-button-row'>
-                    <button onClick={() => handleLoginOnClick()}>{ showSignup ? 'Existing User' : 'Login' }</button>
-                    <button onClick={() => handleSignupOnClick()}>Sign Up</button>
+                    <button className='login-buttons' onClick={() => handleLoginOnClick()}>{ showSignup ? 'Existing User' : 'Login' }</button>
+                    <button className='login-buttons' onClick={() => handleSignupOnClick()}>Sign Up</button>
                 </div>
             </div>
         </div>

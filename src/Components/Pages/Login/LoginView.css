@@ -5,11 +5,90 @@
     align-items: center;
 }
 
+.login-form-container {
+    padding: 20px;
+    border-radius: 5px;
+    height: 400px;
+    max-width: 500px;
+    border: 1px solid black;
+    max-width: 500px;
+    box-shadow: 2px 2px 10px 0px #000000;
+}
+
 .login-page-container h1 {
     text-align: center;
 }
 
-.login-form-container {
-    background-color: red;
-    max-width: 500px;
+.input-field-container {
+    padding-top: 10px;
+}
+
+.login-button-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 15px;
+}
+
+.login-buttons {
+    height: 40px;
+    width: 150px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.login-form-container input {
+    position: relative;
+}
+
+.input-container {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.form-field {
+    border: 0;
+    border-bottom: 2px solid black;
+    outline: 0;
+    font-size: 1rem;
+    color: black;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+.form-field::placeholder {
+    color: transparent;
+}
+.form-field:placeholder-shown ~ .form-label {
+    cursor: text;
+    top: 20px;
+}
+.form-label {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #9b9b9b;
+}
+.form-field:focus {
+    padding-bottom: 6px;
+    font-weight: 500;
+    border-width: 2px;
+    border-image: linear-gradient(to right, #bdbdbd, #000000);
+    border-image-slice: 1;
+}
+.form-field:focus ~ .form-label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #000000;
+    font-weight: 500;
 }
